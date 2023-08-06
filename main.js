@@ -2,23 +2,6 @@ const searchWeather = document.querySelector(".search-weather");
 const currentWeather = document.querySelector(".currentWeather");
 const currentWeatherDetails = document.querySelector(".currentWeatherDetails");
 
-const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": API_KEY,
-    "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
-  },
-};
-async function getWeather(location) {
-  try {
-    const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${location}`;
-    const response = await fetch(url, options);
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 async function showWeather(e) {
   e.preventDefault();
@@ -28,7 +11,7 @@ async function showWeather(e) {
     const weather = await getWeather(location);
     const { name, region, country, localtime } = weather.location;
     const {temp_c,feelslike_c,wind_kph,pressure_mb,uv,humidity,condition } = weather.current;
-      // console.log(weather);
+      console.log(weather);
       const time12Hours=Number((localtime.split(' '))[1].slice(0,2))>=13 && Number((localtime.split(' '))[1].slice(0,2))<=23? (Number((localtime.split(' '))[1].slice(0,2))-12).toString()+(localtime.split(' '))[1].slice(2)+" PM":(localtime.split(' '))[1]+" AM";
 
     currentWeather.innerHTML = `

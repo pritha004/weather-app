@@ -16,14 +16,24 @@ p{
     font-size: x-small;
     padding: 0.2rem 0rem;
 }
+
+ul{
+    list-style: none;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
 #main{
-    width: 100vw;
+    /* width: 100vw; */
     /* border: 1px solid yellow; */
     padding: 1.4rem;
 }
-
 #aside{
-    /* border: 1px solid blueviolet; */
+    /* width: 100vw; */
+    /* border: 1px solid yellow; */
+    padding: 1.4rem;
 }
 .search-weather{
     /* border: 1px solid red; */
@@ -35,7 +45,7 @@ p{
 
 #location{
     height: 2rem;
-    width: 80%;
+    width: 70%;
     padding: 0.4rem;
     border-radius: 4px;
     border-color: rgb(0, 0, 0);
@@ -81,6 +91,7 @@ p{
 .left{
     text-align: left;
     flex: 2;
+    padding: 0.8rem;
 }
 
 .right{
@@ -131,6 +142,68 @@ p{
     padding: 0.8rem;
     background-color: inherit;
    }
+
+/* Css for side panel */
+
+.forecastCard{
+    height: 60vh;
+    /* display: flex; */
+    border: 1px solid rgb(24, 22, 22);
+    border-radius: 0.8rem;
+    background-color: rgb(24, 22, 22);
+    /* border: 1px solid green;   */
+}
+
+.forecastCard #title{
+    background-color: inherit;
+    border-radius: inherit;
+    color: white;
+    font-size: medium;
+    padding: 0.8rem 0rem 0rem 1.2rem ;
+}
+
+.forecastCard ul{
+    height: 55vh;
+    border-radius: inherit;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    /* border: 1px solid red;   */
+}
+
+.forecastCard ul li{
+    height: inherit;
+    background-color: inherit;
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid green;   */
+}
+
+.forecastCard ul li div{
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border-radius: inherit;
+    /* border: 1px solid yellow;   */
+}
+
+.forecastCard ul li .div-date p, .div-icon-condition p{
+    background-color: inherit;
+    color: white;
+    font-size: small;
+}
+
+.forecastCard ul li .div-temp{
+    display: flex;
+    flex-direction: column;
+}
+
+.forecastCard ul li .div-temp p{
+    background-color: inherit;
+}
 
 @media only screen and (min-width:767px){
 

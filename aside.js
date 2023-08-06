@@ -1,21 +1,33 @@
+const forecast = document.querySelector(".forecast");
 
-// const url = 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=London&days=3';
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '819be45fdemsh99c70ad79a6a00ep1be7a6jsn144924b4a02d',
-// 		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-// 	}
-// };
+async function showForecast(e) {
+  e.preventDefault();
+  const location = this.querySelector("[name=location]").value;
 
-// try {
-// 	const response = await fetch(url, options);
-// 	const result = await response.text();
-// 	console.log(result);
-// } catch (error) {
-// 	console.error(error);
-// }
-// ======================================
+  try {
+    const weather = await getWeather(location);
+    forecast.innerHTML = `
+    <div class="forecastCard">
+      <p id="title">3-DAY FORECAST</p>
+      <ul>
+         ${weather.forecast.forecastday.map((day) => {
+            return `<li>
+                <div class="div-date"><p>${day.date.slice(6).replace('-','/')}, ${(new Date(day.date).toLocaleString('en-us', {weekday: 'long'})).slice(0,3)}<p></div>
+                <div class="div-icon-condition"><p>${day.day.maxtemp_c}/${day.day.mintemp_c} &#8451<p></div>
+                <div class="div-temp">
+                  <img src="${day.day.condition.icon}" alt="weather_condition" style="background-color: rgb(24, 22, 22);" />
+                  <p>${day.day.condition.text}<p>
+                </div>
+            </li>`;
+         }).join('')}
+      </ul>
+    </div>`;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+searchWeather.addEventListener("submit", showForecast);
 
 // forcastday=[day1,day2,day3]
 // hour=[1,2,3,...,4]
