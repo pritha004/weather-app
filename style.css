@@ -206,6 +206,68 @@ main{
     text-align: center;
 }
 
+/* CSS for hourlyForecast */
+
+.hourlyForecast{
+    padding-top: 2rem;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.media-scroller{
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    grid-auto-columns: 31%;
+    padding: 0 1rem 1rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain; 
+
+}
+
+.media-element{
+    padding: 1rem;
+    background-color: rgb(24, 22, 22); 
+    display: grid;
+    grid-template-rows: min-content;
+    gap: 1rem;
+    border: 1px solid rgb(24, 22, 22);
+    border-radius: 0.8rem;
+}
+
+.media-element div, .media-element p{
+    background-color: rgb(24, 22, 22);
+}
+
+.media-element div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.snaps-inline{
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 1rem;
+}
+
+.snaps-inline>*{
+    scroll-snap-align: start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width:767px){
     main{
         flex-direction: row;

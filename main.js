@@ -1,6 +1,7 @@
 const searchWeather = document.querySelector(".search-weather");
 const currentWeather = document.querySelector(".currentWeather");
 const currentWeatherDetails = document.querySelector(".currentWeatherDetails");
+const hourlyForecast=document.querySelector(".hourlyForecast");
 
 
 async function showWeather(e) {
@@ -11,7 +12,7 @@ async function showWeather(e) {
     const weather = await getWeather(location);
     const { name, region, country, localtime } = weather.location;
     const {temp_c,feelslike_c,wind_kph,pressure_mb,uv,humidity,condition } = weather.current;
-      console.log(weather);
+      // console.log(weather);
       const time12Hours=Number((localtime.split(' '))[1].slice(0,2))>=13 && Number((localtime.split(' '))[1].slice(0,2))<=23? (Number((localtime.split(' '))[1].slice(0,2))-12).toString()+(localtime.split(' '))[1].slice(2)+" PM":(localtime.split(' '))[1]+" AM";
 
     currentWeather.innerHTML = `
@@ -77,51 +78,27 @@ async function showWeather(e) {
             </div>
           </div>
     `;
+
+    hourlyForecast.innerHTML=`
+        <div class="media-scroller snaps-inline">
+        
+         ${weather.forecast.forecastday[0].hour.map((hour) => {
+
+            return `<div class="media-element">
+            <div class="div-date"><p>${Number((hour.time.split(' '))[1].slice(0,2))>=13 && Number((hour.time.split(' '))[1].slice(0,2))<=23? (Number((hour.time.split(' '))[1].slice(0,2))-12).toString()+(hour.time.split(' '))[1].slice(2)+" PM":(hour.time.split(' ')[1])+" AM"}<p></div>
+                <div class="div-icon-condition"><p>${hour.temp_c} &#8451<p></div>
+                <div class="div-temp">
+                  <img src="${hour.condition.icon}" alt="weather_condition" style="background-color: rgb(24, 22, 22);" />
+                  <p>${hour.condition.text}<p>
+                </div>
+            </div>`;
+         }).join('')}
+      
+      </div>
+    `;
   } catch (error) {
     console.error(error);
   }
 }
 
 searchWeather.addEventListener("submit", showWeather);
-
-// const data = {
-//   location: {
-//     name: "Kolkata",
-//     region: "West Bengal",
-//     country: "India",
-//     lat: 22.57,
-//     lon: 88.37,
-//     tz_id: "Asia/Kolkata",
-//     localtime_epoch: 1691071314,
-//     localtime: "2023-08-03 19:31",
-//   },
-//   current: {
-//     last_updated_epoch: 1691070300,
-//     last_updated: "2023-08-03 19:15",
-//     temp_c: 30.0,
-//     temp_f: 86.0,
-//     is_day: 0,
-//     condition: {
-//       text: "Mist",
-//       icon: "//cdn.weatherapi.com/weather/64x64/night/143.png",
-//       code: 1030,
-//     },
-//     wind_mph: 9.4,
-//     wind_kph: 15.1, |wind
-//     wind_degree: 170,
-//     wind_dir: "S",
-//     pressure_mb: 999.0, |mb
-//     pressure_in: 29.5,
-//     precip_mm: 0.0,
-//     precip_in: 0.0,
-//     humidity: 84, | %
-//     cloud: 50,
-//     feelslike_c: 36.1,
-//     feelslike_f: 96.9,
-//     vis_km: 4.0,
-//     vis_miles: 2.0,
-//     uv: 1.0, |uv index
-//     gust_mph: 13.4,
-//     gust_kph: 21.6,
-//   },
-// };
