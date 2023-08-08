@@ -209,7 +209,7 @@ main{
 /* CSS for hourlyForecast */
 
 .hourlyForecast{
-    padding-top: 2rem;
+    padding-top: 1rem;
     height: 40vh;
     display: flex;
     justify-content: center;
@@ -220,7 +220,7 @@ main{
     display: grid;
     gap: 1rem;
     grid-auto-flow: column;
-    grid-auto-columns: 31%;
+    grid-auto-columns: 29%;
     padding: 0 1rem 1rem;
     overflow-x: auto;
     overscroll-behavior-inline: contain; 
@@ -239,12 +239,20 @@ main{
 
 .media-element div, .media-element p{
     background-color: rgb(24, 22, 22);
+    width:fit-content
 }
 
 .media-element div{
+    
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.media-element .div-temp{
+    
+    display: flex;
+    flex-direction: column;
 }
 
 .snaps-inline{
