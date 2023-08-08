@@ -203,28 +203,37 @@ main{
 
 .forecastCard ul li .div-temp p{
     background-color: inherit;
+    text-align: center;
 }
 
 @media only screen and (min-width:767px){
+    main{
+        flex-direction: row;
+    }
 
     #main{
-        width: 60vw;
+        width: 55vw;
     }
 
     #aside{
-        width:40vw;
+        margin-top: 1.2rem;
+        width:45vw;
         /* border: 1px solid blueviolet; */
     }
 
 }
 
 @media only screen and (min-width:1024px){
+    main{
+        flex-direction: row;
+    }
 
     #main{
         width: 60vw;
     }
 
     #aside{
+        margin-top: 1.2rem;
         width:40vw;
         /* border: 1px solid blueviolet; */
     }
